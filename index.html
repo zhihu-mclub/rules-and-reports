@@ -142,31 +142,7 @@
                       <th>知乎主页</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td class="mdui-ripple">z0z0r4</td>
-                      <td class="mdui-ripple">3531890582</td>
-                      <td class="mdui-ripple">z0z0r4@outlook.com</td>
-                      <td class="mdui-ripple">https://www.zhihu.com/people/z0z0r4</td>
-                    </tr>
-                    <tr>
-                      <td class="mdui-ripple">熊孩子</td>
-                      <td class="mdui-ripple">3273827214</td>
-                      <td class="mdui-ripple">eddy_current@163.com</td>
-                      <td class="mdui-ripple">https://www.zhihu.com/people/eddy-current</td>
-                    </tr>
-                    <tr>
-                      <td class="mdui-ripple">Bluestone81</td>
-                      <td class="mdui-ripple">1429954079</td>
-                      <td class="mdui-ripple">1429954079@qq.com</td>
-                      <td class="mdui-ripple">https://www.zhihu.com/people/star0981</td>
-                    </tr>
-                    <tr>
-                      <td class="mdui-ripple">ColorClassBlue</td>
-                      <td class="mdui-ripple">314231463</td>
-                      <td class="mdui-ripple">gongshibo472206@163.com</td>
-                      <td class="mdui-ripple">https://www.zhihu.com/people/doge-chai-chai-33</td>
-                      </tr>
+                  <tbody id="inf_list">
                   </tbody>
                 </table>
               </div>
@@ -180,6 +156,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
     // $('#menu').hide();
+$(document).ready(function () {
     var inst = new mdui.Drawer('#drawer');
     inst.close();
     var mark=document.getElementById("rules");
@@ -199,11 +176,23 @@
     $('#close_key').click(function(){
       $('#menu').show();
       inst.close();
-    })
+    });
     $('#menu').click(function () {
       inst.open();
       $('#menu').hide();
-      })
+      });
+      $.get('admin_inf.json',function (result) {
+        var obj=result;
+        var str;
+      for(var i in obj){
+        str=document.getElementById('inf_list').innerHTML+'<tr><td class="mdui-ripple">'+i+'</td><td class="mdui-ripple">'+obj[i].qq+'</td><td class="mdui-ripple">'+obj[i].email+'</td><td class="mdui-ripple">'+obj[i].main_page+'</td></tr>';
+        document.getElementById('inf_list').innerHTML=str;
+      }
+      });
+  })
+  var parse_inf=function () {
+
+    }
     </script>
 </body>
 </html>
