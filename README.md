@@ -4,7 +4,7 @@
 
 直接点击文档可进行在线浏览，或者请点击右上方Code -> Download as ZIP下载仓库内的文档内容。
 
-通过Github Pages进行浏览：<https://zhihu-mclub.github.io>
+通过Github Pages进行浏览：<https://zhihu-mclub.github.io/rules-and-reports>
 
 ## 投诉与建议
 
