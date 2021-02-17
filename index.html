@@ -57,7 +57,6 @@
     <div class="mdui-dialog-title">Lisence<i class="mdui-icon material-icons">verified_user</i></div>
     <div class="mdui-dialog-content">
       <div class="container">
-        <div id="load"></div>
         <a href="https://www.mdui.org/" class="lsl">Material Design User Interface</a>
         <code class="lsc">The MIT License (MIT)
 
@@ -130,6 +129,7 @@
     </div>
   </div>
         <div class="mdui-container">
+          <div id="loader" class="mdui-spinner"></div>
             <div id="rules"></div>
             <div class="mdui-divider"></div>
             <div id="punish"></div>
@@ -162,8 +162,7 @@ $(document).ready(function () {
     inst.close();
     var mark=document.getElementById('rules');
     var punish=document.getElementById('punish');
-    var load=document.getElementById('load');
-    load.innerHTML='<div id="loader" class="mdui-spinner"></div>'
+    var load=document.getElementById('loader');
     $.get('圈规v6.0.md',function (result) {
       var conv=new showdown.Converter();
       var marked=conv.makeHtml(result);
@@ -174,7 +173,7 @@ $(document).ready(function () {
       var conv=new showdown.Converter();
       var marked=conv.makeHtml(result);
       punish.innerHTML=marked;
-      load.parentNode.removeChild(load);
+      load.parentNode.removeChild(loader);
       });
     $('#close_key').click(function(){
       $('#menu').show();
