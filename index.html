@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">  
     <style type="text/css">
+  html{
+    scroll-behavior: smooth;
+  }
   p{
     line-height: 1.8;
   }
@@ -42,9 +45,14 @@
     font-family: 'Ubuntu', sans-serif;
     font-size: 20px;
   }
+  #menu{
+    position: fixed;
+    top: 0;
+  }
 </style>
 </head>
 <body class="mdui-theme-layout-dark mdui-drawer-body-left noto">
+  <button class="mdui-btn mdui-ripple" id="menu"><i class="mdui-list-item-icon mdui-icon material-icons">list</i></button>
   <div class="mdui-dialog" id="license">
     <div class="mdui-dialog-title">Lisence<i class="mdui-icon material-icons">verified_user</i></div>
     <div class="mdui-dialog-content">
@@ -102,24 +110,27 @@
   </div>
   <div class="mdui-dialog" id="privacy">
     <div class="mdui-dialog-title">Privacy Policy<i class="mdui-icon material-icons">security</i></div>
-    <div class="mdui-dialog-content">When you visit this page,we won't record any information.You can visit all the codes of this page in Github.</div>
+    <div class="mdui-dialog-content">We won't record any information when you visit this page.You can visit all the codes of this page in Github.</div>
     <div class="mdui-dialog-actions">
       <button class="mdui-btn mdui-ripple mdui-text-color-white-text" mdui-dialog-close>I Know</button>
     </div>
   </div>
 </div>
-  <div class="mdui-drawer" id="drawer">
-    <div class="mdui-list">
-      <a href="https://github.com/zhihu-mclub/rules-and-reports/tree/gh-pages" class="dlist mdui-list-item mdui-ripple">View Page In Github<i class="mdui-list-item-icon mdui-icon material-icons">launch</i></a>
-      <div class="mdui-divider"></div>
-      <a mdui-dialog="{target: '#privacy'}" class="dlist mdui-list-item mdui-ripple">Privacy Policy<i class="mdui-list-item-icon mdui-icon material-icons">security</i></a>
-      <div class="mdui-divider"></div>
-      <a mdui-dialog="{target: '#license'}" class="dlist mdui-list-item mdui-ripple">License<i class="mdui-list-item-icon mdui-icon material-icons">verified_user</i></a>
-    </div>
 
+  <div class="mdui-drawer" id="drawer">
+    <button class="mdui-btn mdui-ripple" id="close_key"><i class="material-icons mdui-icon">close</i></button>
+    <div class="mdui-list">
+      <a href="https://github.com/zhihu-mclub/rules-and-reports/tree/gh-pages" class="dlist mdui-list-item mdui-ripple"><i class="mdui-list-item-icon mdui-icon material-icons">launch</i>View Page In Github</a>
+      <a href="https://www.zhihu.com/club/1194982261014130688/by_created" class="dlist mdui-list-item mdui-ripple"><i class="mdui-list-item-icon mdui-icon material-icons">arrow_back</i>Back to Zhihu Club</a>
+      <div class="mdui-divider"></div>
+      <a mdui-dialog="{target: '#privacy'}" class="dlist mdui-list-item mdui-ripple"><i class="mdui-list-item-icon mdui-icon material-icons">security</i>Privacy Policy</a>
+      <div class="mdui-divider"></div>
+      <a mdui-dialog="{target: '#license'}" class="dlist mdui-list-item mdui-ripple"><i class="mdui-list-item-icon mdui-icon material-icons">verified_user</i>License</a>
+    </div>
   </div>
         <div class="mdui-container">
             <div id="rules"></div>
+            <div class="mdui-divider"></div>
             <div id="punish"></div>
             <div class="mdui-table-fluid">
                 <table class="mdui-table mdui-table-hoverable mdui-text-color-white-text">
@@ -168,8 +179,8 @@
     <script src="./showdown.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
+    $('#menu').hide();
     var inst = new mdui.Drawer('#drawer');
-    inst.open();
     var mark=document.getElementById("rules");
     var punish=document.getElementById("punish");
     mark.innerHTML='<div id="loader" class="mdui-spinner"></div>'
@@ -183,9 +194,14 @@
       var conv=new showdown.Converter();
       var marked=conv.makeHtml(result);
       punish.innerHTML=marked;
-      })
-    $('#id').click(function () {
+      });
+    $('#close_key').click(function(){
+      $('#menu').show();
       inst.close();
+    })
+    $('#menu').click(function () {
+      inst.open();
+      $('#menu').hide();
       })
     </script>
 </body>
