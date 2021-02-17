@@ -153,8 +153,8 @@
     src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
     integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
     crossorigin="anonymous"></script>
-    <script src="./showdown.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/showdownjs/showdown@1.9.1/dist/showdown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script type="text/javascript">
     // $('#menu').hide();
 $(document).ready(function () {
@@ -163,13 +163,13 @@ $(document).ready(function () {
     var mark=document.getElementById('rules');
     var punish=document.getElementById('punish');
     var load=document.getElementById('loader');
-    $.get('圈规v6.0.md',function (result) {
+    $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/圈规v6.0.md',function (result) {
       var conv=new showdown.Converter();
       var marked=conv.makeHtml(result);
       mark.innerHTML=marked;
       document.getElementById("punish_in_md").href="#punish";
       });
-    $.get('Minecraft圈处罚规范.md',function (result) {
+    $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/Minecraft圈处罚规范.md',function (result) {
       var conv=new showdown.Converter();
       var marked=conv.makeHtml(result);
       punish.innerHTML=marked;
@@ -192,9 +192,6 @@ $(document).ready(function () {
       }
       });
   })
-  var parse_inf=function () {
-
-    }
     </script>
 </body>
 </html>
