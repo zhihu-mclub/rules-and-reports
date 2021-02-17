@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知乎Minecraft圈 圈规v6.0</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+    integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw"
+    crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100&display=swap" rel="stylesheet">    
+    <style type="text/css">
+  .noto{
+    font-family: 'Noto Sans SC', serif;
+}
+  a{
+    color: #FFFFFF;
+  }
+  #loader{
+    position: relative;
+    left:40%;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+  }
+</style>
+</head>
+<body class="mdui-theme-layout-dark noto">
+        <div class="mdui-container">
+            <div id="rules"></div>
+            <div id="punish"></div>
+            <div class="mdui-table-fluid">
+                <table class="mdui-table mdui-table-hoverable mdui-text-color-white-text">
+                  <thead>
+                    <tr>
+                      <th>在圈内的名称</th>
+                      <th>QQ</th>
+                      <th>Email</th>
+                      <th>知乎主页</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="mdui-ripple">z0z0r4</td>
+                      <td class="mdui-ripple">3531890582</td>
+                      <td class="mdui-ripple">z0z0r4@outlook.com</td>
+                      <td class="mdui-ripple">https://www.zhihu.com/people/z0z0r4</td>
+                    </tr>
+                    <tr>
+                      <td class="mdui-ripple">熊孩子</td>
+                      <td class="mdui-ripple">3273827214</td>
+                      <td class="mdui-ripple">eddy_current@163.com</td>
+                      <td class="mdui-ripple">https://www.zhihu.com/people/eddy-current</td>
+                    </tr>
+                    <tr>
+                      <td class="mdui-ripple">Bluestone81</td>
+                      <td class="mdui-ripple">1429954079</td>
+                      <td class="mdui-ripple">1429954079@qq.com</td>
+                      <td class="mdui-ripple">https://www.zhihu.com/people/star0981</td>
+                    </tr>
+                    <tr>
+                      <td class="mdui-ripple">ColorClassBlue</td>
+                      <td class="mdui-ripple">314231463</td>
+                      <td class="mdui-ripple">gongshibo472206@163.com</td>
+                      <td class="mdui-ripple">https://www.zhihu.com/people/doge-chai-chai-33</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div id="mark"></div>
+        </div>
+    <script
+    src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+    integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+    crossorigin="anonymous"></script>
+    <script src="/showdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    var mark=document.getElementById("rules");
+    var punish=document.getElementById("punish");
+    mark.innerHTML='<div id="loader" class="mdui-spinner"></div>'
+    $.get('圈规v6.0.md',function (result) {
+      var conv=new showdown.Converter();
+      var marked=conv.makeHtml(result);
+      mark.innerHTML=marked;
+      document.getElementById("punish_in_md").href="#punish";
+      });
+    $.get('Minecraft圈处罚规范.md',function (result) {
+      var conv=new showdown.Converter();
+      var marked=conv.makeHtml(result);
+      punish.innerHTML=marked;
+      })
+    </script>
+</body>
+</html>
