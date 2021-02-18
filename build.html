@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>开发文档</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"
+            integrity="sha384-cLRrMq39HOZdvE0j6yBojO4+1PrHfB7a9l5qLcmRm/fiWXYY+CndJPmyu5FV/9Tw"
+            crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+    <style type="text/css">
+        html{
+            scroll-behavior: smooth;
+        }
+        p{
+            line-height: 1.8;
+        }
+        .noto{
+            font-family: 'Noto Sans SC', serif;
+        }
+        a{
+            color: #FFFFFF;
+        }
+        blockquote{
+            color: #9d9d9d;
+        }
+        .del{
+            background-color: #000000;
+            color: #000000;
+            transition-duration: 0.4s;
+        }
+        ::-webkit-scrollbar {display:none}
+        .del:hover{
+            color: #FFFFFF;
+        }
+        #loader{
+            position: relative;
+            left:40%;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+        }
+        .dlist{
+            font-family: 'Ubuntu', sans-serif;
+        }
+        .lsc{
+            font-family: 'Ubuntu', sans-serif;
+            display: block;
+        }
+        .lsl{
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 20px;
+        }
+        #menu{
+            position: fixed;
+            top: 0;
+        }
+    </style>
+</head>
+<body class="mdui-drawer-body-left mdui-theme-layout-dark noto">
+<button class="mdui-btn mdui-ripple" id="menu"><i class="mdui-list-item-icon mdui-icon material-icons">list</i></button>
+
+<div class="mdui-drawer" id="drawer">
+    <button class="mdui-btn mdui-ripple" id="close_key"><i class="material-icons mdui-icon">close</i></button>
+    <div class="mdui-list">
+        <a href="index.html" class="dlist mdui-list-item mdui-ripple"><i class="mdui-list-item-icon mdui-icon material-icons">arrow_back</i>Back to Index</a>
+    </div>
+</div>
+
+<div class="mdui-container">
+    <div class="mdui-tab mdui-tab-full-width" mdui-tab>
+        <a id="roles" class="mdui-ripple">如何维护圈规</a>
+        <a id="adml" class="mdui-ripple">如何维护管理员列表</a>
+        <a id="commit" class="mdui-ripple">如何提交更改</a>
+        <a id="addpage" class="mdui-ripple">如何新增页面</a>
+    </div>
+    <div id="content"></div>
+</div>
+<script
+        src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"
+        integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/gh/showdownjs/showdown@1.9.1/dist/showdown.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var inst = new mdui.Drawer('#drawer');
+        inst.close();
+        $.get('pages/rules.md',function (result) {
+            var conv=new showdown.Converter();
+            var marked=conv.makeHtml(result);
+            document.getElementById('content').innerHTML=marked;
+            Prism.highlightAll();
+        })
+        $('#roles').click(function () {
+            $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/pages/rules.md',function (result) {
+                var conv=new showdown.Converter();
+                var marked=conv.makeHtml(result);
+                document.getElementById('content').innerHTML=marked;
+                Prism.highlightAll();
+            })
+        });
+        $('#adml').click(function () {
+            $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/pages/admin.md',function (result) {
+                var conv=new showdown.Converter();
+                var marked=conv.makeHtml(result);
+                document.getElementById('content').innerHTML=marked;
+                $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/admin_inf.json',function (result) {
+                    document.getElementById('list').innerText=JSON.stringify(result);
+                    Prism.highlightAll();
+                })
+            })
+        });
+        $('#commit').click(function () {
+            $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/pages/commit.md',function (result) {
+                var conv=new showdown.Converter();
+                var marked=conv.makeHtml(result);
+                document.getElementById('content').innerHTML=marked;
+                Prism.highlightAll();
+            })
+        });
+        $('#addpage').click(function () {
+            $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/pages/addpage.md',function (result) {
+                var conv=new showdown.Converter();
+                var marked=conv.makeHtml(result);
+                document.getElementById('content').innerHTML=marked;
+                Prism.highlightAll();
+            })
+        });
+        $('#close_key').click(function(){
+            $('#menu').show();
+            inst.close();
+        });
+        $('#menu').click(function () {
+            inst.open();
+            $('#menu').hide();
+        });
+    })
+</script>
+</body>
+</html>
