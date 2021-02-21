@@ -9,7 +9,7 @@ As long as you get the permission of contributing,you can push your commit.But b
 + ask administrators or other contributors before roll back commits.They will help you rolling back files correctly,otherwise this branch may lose working progress or cause fatal errors in Github Pages/Vercel.
 
 ### 简体中文
-本分支仅用于托管Github Pages。清移步[Github Issues](https://github.com/zhihu-mclub/rules-and-reports/issues)以报告漏洞或提交建议。谨记，所有的PR将会被立即关闭。另外，您可以在知乎私信[shandiankulishe](https://www.zhihu.com/people/shan-dian-ku-li-she)以报告漏洞或提交建议。  
+本分支仅用于托管Github Pages。请移步[Github Issues](https://github.com/zhihu-mclub/rules-and-reports/issues)以报告漏洞或提交建议。谨记，所有的PR将会被立即关闭。另外，您可以在知乎私信[shandiankulishe](https://www.zhihu.com/people/shan-dian-ku-li-she)以报告漏洞或提交建议。  
 你可以寻找Minecraft圈管理员以获得在本分支提交更改的权限，联系管理员的方式已经在[本页](https://github.com/zhihu-mclub/rules-and-reports/blob/main/%E7%AE%A1%E7%90%86%E5%91%98%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F.md)介绍。你还可以寻找[MineCommander](https://www.zhihu.com/people/MineCommander)以获得上述权限，不过要注意，他很少在工作日出现。  
 当你获得在本分支提交的权限后，您可以立即推送您的更改。但是在推送前，你需要阅读以下步骤以便本分支可以正常工作。
 + 尽量不要使用"--hard"诸如此类的参数以便这些文件不会被写入冗余标记或代码。
