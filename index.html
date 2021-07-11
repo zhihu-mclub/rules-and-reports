@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RP9EB29D9Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-RP9EB29D9Y');
-  </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>知乎Minecraft圈 圈规v6.0</title>
@@ -178,13 +169,13 @@
     var mark=document.getElementById('rules');
     var punish=document.getElementById('punish');
     var load=document.getElementById('loader');
-    $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/圈规v6.0.md',function (result) {
+    $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports/圈规.md',function (result) {
       var conv=new showdown.Converter();
       var marked=conv.makeHtml(result);
       mark.innerHTML=marked;
       document.getElementById("punish_in_md").href="#punish";
       });
-    $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports@gh-pages/Minecraft圈处罚规范.md',function (result) {
+    $.get('https://cdn.jsdelivr.net/gh/zhihu-mclub/rules-and-reports/Minecraft圈处罚规范.md',function (result) {
       var conv=new showdown.Converter();
       var marked=conv.makeHtml(result);
       punish.innerHTML=marked;
